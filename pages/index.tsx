@@ -1,7 +1,8 @@
 import { NextPage } from "next";
 import { ThemeProvider } from "styled-components";
 import { Head } from "../components/utilities/Head";
-import { Landing } from "../components/sections/Landing/Landing";
+import { Landing } from "../components/sections/Landing";
+import { About } from "../components/sections/About";
 import { Theme } from "../theme";
 
 const Home: NextPage = () => {
@@ -9,6 +10,7 @@ const Home: NextPage = () => {
     <ThemeProvider theme={Theme}>
       <Head />
       <Landing />
+      <About />
     </ThemeProvider>
   );
 };

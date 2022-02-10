@@ -4,13 +4,14 @@ import { Accent } from "../../typography/Accent";
 import { Container } from "../../layout/Container";
 import { Heading, Subheading, MinorHeading } from "../../typography/Headings";
 import { Avatar } from "../../shared/Avatar";
+import { NameBanner } from "../../shared/NameBanner";
 
 export function Landing(): ReactElement {
   return (
     <Section direction="horizontal" crossAxis="start" mainAxis="center">
       <Container direction="vertical">
         <Heading as="h1">
-          Chet <Accent>Davidson</Accent>
+          <NameBanner />
         </Heading>
         <Subheading>
           <Accent>Front-End</Accent> Developer

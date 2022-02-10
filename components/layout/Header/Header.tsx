@@ -3,7 +3,7 @@ import { Container } from "../Container";
 import { Avatar } from "../../shared/Avatar";
 import { NameBanner } from "../../shared/NameBanner";
 import { Subheading } from "./../../typography/Headings";
-import { SectionPicker } from "./components";
+import { SectionPicker, HeaderLinks } from "./components";
 import * as S from "./styles";
 
 export function Header(): ReactElement {
@@ -15,6 +15,7 @@ export function Header(): ReactElement {
           <NameBanner />
         </Subheading>
         <SectionPicker />
+        <HeaderLinks />
       </Container>
     </S.Header>
   );

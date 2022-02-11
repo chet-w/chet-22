@@ -13,7 +13,7 @@ export function About(): ReactElement {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      setShowSection(scrollDistance > window.innerHeight / 3);
+      setShowSection(scrollDistance > window.innerHeight / 4);
     } else {
       setShowSection(false);
     }
@@ -25,9 +25,9 @@ export function About(): ReactElement {
         {showSection && (
           <motion.div
             variants={S.sectionVariants}
-            initial="hidden"
+            initial="entry"
             animate="visible"
-            exit="hidden"
+            exit="exit"
           >
             <Heading variants={S.sectionVariants}>
               <Accent>About me</Accent>

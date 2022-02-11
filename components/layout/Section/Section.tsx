@@ -3,9 +3,13 @@ import * as S from "./styles";
 import { SectionProps } from "./types";
 import { Container } from "../Container";
 
-export function Section({ children, ...containerProps }: SectionProps) {
+export function Section({
+  children,
+  size = "normal",
+  ...containerProps
+}: SectionProps) {
   return (
-    <S.Section>
+    <S.Section size={size}>
       <Container {...containerProps}>{children}</Container>
     </S.Section>
   );

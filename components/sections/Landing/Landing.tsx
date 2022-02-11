@@ -8,7 +8,12 @@ import { NameBanner } from "../../shared/NameBanner";
 
 export function Landing(): ReactElement {
   return (
-    <Section direction="horizontal" crossAxis="start" mainAxis="center">
+    <Section
+      direction="horizontal"
+      crossAxis="start"
+      mainAxis="center"
+      size="big"
+    >
       <Container direction="vertical">
         <Heading as="h1">
           <NameBanner />

@@ -7,6 +7,9 @@ export const Header = styled(motion.header)`
   width: 100%;
   top: 0;
   left: 0;
+  background: ${(props) => props.theme.colors.translucent.white};
+  backdrop-filter: blur(5px);
+  z-index: 1000;
 `;
 
 export const AvatarWrapper = styled(motion.div)``;

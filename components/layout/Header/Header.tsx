@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import { Container } from "../Container";
 import { Avatar } from "../../shared/Avatar";
@@ -9,9 +9,16 @@ import * as S from "./styles";
 import { useScrollDistance } from "../../../hooks/useScrollDistance";
 
 export function Header() {
+  const [showHeader, setShowHeader] = useState(false);
   const scrollDistance = useScrollDistance();
-  const showHeader =
-    typeof window !== "undefined" && scrollDistance > window.screenY * 1.25;
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setShowHeader(scrollDistance > window.innerHeight / 2);
+    } else {
+      setShowHeader(false);
+    }
+  }, [scrollDistance]);
 
   return (
     <AnimatePresence>

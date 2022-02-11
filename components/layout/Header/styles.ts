@@ -12,7 +12,11 @@ export const Header = styled(motion.header)`
   z-index: 1000;
 `;
 
-export const AvatarWrapper = styled(motion.div)``;
+export const AvatarWrapper = styled(motion.div)`
+  & > div {
+    margin-left: 0;
+  }
+`;
 
 export const headerVariants: Record<string, Variant> = {
   visible: {

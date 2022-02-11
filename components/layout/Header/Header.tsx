@@ -1,4 +1,5 @@
 import React from "react";
+import { AnimatePresence } from "framer-motion";
 import { Container } from "../Container";
 import { Avatar } from "../../shared/Avatar";
 import { NameBanner } from "../../shared/NameBanner";
@@ -12,16 +13,32 @@ export function Header() {
   const showHeader =
     typeof window !== "undefined" && scrollDistance > window.screenY * 1.25;
 
-  return showHeader ? (
-    <S.Header>
-      <Container direction="horizontal" crossAxis="center">
-        <Avatar size="small" />
-        <Subheading noMargin>
-          <NameBanner />
-        </Subheading>
-        <SectionPicker />
-        <HeaderLinks />
-      </Container>
-    </S.Header>
-  ) : null;
+  return (
+    <AnimatePresence>
+      {showHeader && (
+        <S.Header
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          variants={S.headerVariants}
+        >
+          <Container direction="horizontal" crossAxis="center">
+            <S.AvatarWrapper
+              variants={S.avatarVariants}
+              initial="hidden"
+              animate="visible"
+              transition={{ delay: 0.4 }}
+            >
+              <Avatar size="small" />
+            </S.AvatarWrapper>
+            <Subheading noMargin>
+              <NameBanner />
+            </Subheading>
+            <SectionPicker />
+            <HeaderLinks />
+          </Container>
+        </S.Header>
+      )}
+    </AnimatePresence>
+  );
 }

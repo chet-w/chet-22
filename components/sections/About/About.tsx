@@ -1,29 +1,52 @@
-import React, { Fragment, ReactElement } from "react";
-import { Section } from "../../layout/Section";
-import { Accent } from "../../typography/Accent/styles";
+import React, { ReactElement, useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Accent } from "../../typography/Accent";
 import { Heading } from "../../typography/Headings";
+import { Section } from "../../layout/Section";
 import { Paragraph } from "../../typography/Paragraph";
+import * as S from "./styles";
+import { useScrollDistance } from "../../../hooks/useScrollDistance";
 
 export function About(): ReactElement {
+  const [showSection, setShowSection] = useState(false);
+  const scrollDistance = useScrollDistance();
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setShowSection(scrollDistance > window.innerHeight / 3);
+    } else {
+      setShowSection(false);
+    }
+  }, [scrollDistance]);
+
   return (
-    <Fragment>
-      <Section direction="vertical" crossAxis="start" mainAxis="start">
-        <Heading>
-          <Accent>About me</Accent>
-        </Heading>
-        <Paragraph>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore
-          consequatur libero blanditiis cum, consequuntur sint nobis ea
-          voluptatem at perspiciatis obcaecati eveniet consectetur saepe tempore
-          ex est optio? Inventore, eveniet.
-        </Paragraph>
-        <Paragraph>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore
-          consequatur libero blanditiis cum, consequuntur sint nobis ea
-          voluptatem at perspiciatis obcaecati eveniet consectetur saepe tempore
-          ex est optio? Inventore, eveniet.
-        </Paragraph>
-      </Section>
-    </Fragment>
+    <Section direction="vertical" crossAxis="start" mainAxis="start">
+      <AnimatePresence>
+        {showSection && (
+          <motion.div
+            variants={S.sectionVariants}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+          >
+            <Heading variants={S.sectionVariants}>
+              <Accent>About me</Accent>
+            </Heading>
+            <Paragraph variants={S.sectionVariants}>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore
+              consequatur libero blanditiis cum, consequuntur sint nobis ea
+              voluptatem at perspiciatis obcaecati eveniet consectetur saepe
+              tempore ex est optio? Inventore, eveniet.
+            </Paragraph>
+            <Paragraph variants={S.sectionVariants}>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore
+              consequatur libero blanditiis cum, consequuntur sint nobis ea
+              voluptatem at perspiciatis obcaecati eveniet consectetur saepe
+              tempore ex est optio? Inventore, eveniet.
+            </Paragraph>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </Section>
   );
 }

@@ -4,6 +4,7 @@ import { Head } from "../components/utilities/Head";
 import { Landing } from "../components/sections/Landing";
 import { Header } from "../components/layout/Header";
 import { About } from "../components/sections/About";
+import { Experience } from "../components/sections/Experience";
 import { Theme } from "../theme";
 
 const Home: NextPage = () => {
@@ -13,6 +14,7 @@ const Home: NextPage = () => {
       <Header />
       <Landing />
       <About />
+      <Experience />
     </ThemeProvider>
   );
 };

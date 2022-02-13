@@ -1,13 +1,13 @@
-import React, { ReactElement, useEffect, useRef, useState } from "react";
+import React, { ReactElement, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Accent } from "../../typography/Accent";
-import { Heading } from "../../typography/Headings";
 import { Section } from "../../layout/Section";
+import { Heading } from "../../typography/Headings";
+import { Accent } from "../../typography/Accent";
 import { Paragraph } from "../../typography/Paragraph";
 import * as S from "./styles";
 import { useAnimateOnScroll } from "../../../hooks/useAnimateOnScroll";
 
-export function About(): ReactElement {
+export function Experience(): ReactElement {
   const sectionRef = useRef<HTMLElement>(null);
   const showSection = useAnimateOnScroll(sectionRef);
 
@@ -27,7 +27,7 @@ export function About(): ReactElement {
             exit="exit"
           >
             <Heading variants={S.sectionVariants}>
-              <Accent>About me</Accent>
+              <Accent>Experience</Accent>
             </Heading>
             <Paragraph variants={S.sectionVariants}>
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore

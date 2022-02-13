@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import { ReactElement, RefObject } from "react";
 
 export interface SectionProps extends StyledSectionProps {
   children?: ReactElement | ReactElement[];

@@ -3,7 +3,7 @@ import * as S from "./styles";
 import { SectionProps } from "./types";
 import { Container } from "../Container";
 
-export const Section = forwardRef(function (
+export const Section = forwardRef(function Section(
   { children, size = "normal", ...containerProps }: SectionProps,
   ref: React.ForwardedRef<HTMLElement>
 ) {

@@ -17,6 +17,7 @@ export function About(): ReactElement {
       crossAxis="start"
       mainAxis="start"
       ref={sectionRef}
+      id="about"
     >
       <AnimatePresence>
         {showSection && (

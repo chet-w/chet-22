@@ -17,6 +17,7 @@ export function Experience(): ReactElement {
       crossAxis="start"
       mainAxis="start"
       ref={sectionRef}
+      id="experience"
     >
       <AnimatePresence>
         {showSection && (

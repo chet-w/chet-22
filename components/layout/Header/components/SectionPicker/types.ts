@@ -6,3 +6,7 @@ export interface Section {
 export interface DropdownButttonProps {
   isActive: boolean;
 }
+
+export interface SectionPickerProps {
+  activeSection: number;
+}

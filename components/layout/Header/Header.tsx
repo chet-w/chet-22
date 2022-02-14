@@ -7,8 +7,9 @@ import { Subheading } from "./../../typography/Headings";
 import { SectionPicker, HeaderLinks } from "./components";
 import * as S from "./styles";
 import { useScrollDistance } from "../../../hooks/useScrollDistance";
+import { HeaderProps } from "./types";
 
-export function Header() {
+export function Header({ activeSection }: HeaderProps) {
   const [showHeader, setShowHeader] = useState(false);
   const scrollDistance = useScrollDistance();
 
@@ -41,7 +42,7 @@ export function Header() {
             <Subheading noMargin>
               <NameBanner />
             </Subheading>
-            <SectionPicker />
+            <SectionPicker activeSection={activeSection} />
             <HeaderLinks />
           </Container>
         </S.Header>

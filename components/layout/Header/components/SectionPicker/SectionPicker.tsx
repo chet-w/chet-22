@@ -2,13 +2,11 @@ import React, { ReactElement } from "react";
 import { CaretCircleDown } from "phosphor-react";
 import useDropdownMenu from "react-accessible-dropdown-menu-hook";
 import { MinorHeading } from "../../../../typography/Headings";
-import { Section } from "./types";
+import { Section, SectionPickerProps } from "./types";
 import * as S from "./styles";
 import { AnimatePresence } from "framer-motion";
 
-export function SectionPicker(): ReactElement {
-  const currentSection = "About";
-
+export function SectionPicker(props: SectionPickerProps): ReactElement {
   const sectionOptions: Section[] = [
     {
       title: "About me",
@@ -19,7 +17,7 @@ export function SectionPicker(): ReactElement {
       link: "#experience",
     },
     {
-      title: "Technical Skills",
+      title: "Skills",
       link: "#skills",
     },
     {
@@ -34,7 +32,7 @@ export function SectionPicker(): ReactElement {
     <S.Wrapper>
       <S.CurrentSection className={isOpen ? "visible" : ""} role="menu">
         <S.DropdownButton {...buttonProps} isActive={isOpen}>
-          <MinorHeading noMargin>{currentSection}</MinorHeading>
+          <MinorHeading noMargin>{sectionOptions[props.activeSection].title}</MinorHeading>
           <S.IconWrapper
             variants={S.buttonVariants}
             animate={isOpen ? "active" : "normal"}

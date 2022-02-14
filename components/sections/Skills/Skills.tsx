@@ -1,4 +1,4 @@
-import React, { ReactElement, useRef } from "react";
+import React, { ReactElement, forwardRef, RefObject } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Section } from "../../layout/Section";
 import { Heading } from "../../typography/Headings";
@@ -7,9 +7,8 @@ import { Paragraph } from "../../typography/Paragraph";
 import * as S from "./styles";
 import { useAnimateOnScroll } from "../../../hooks/useAnimateOnScroll";
 
-export function Skills(): ReactElement {
-  const sectionRef = useRef<HTMLElement>(null);
-  const showSection = useAnimateOnScroll(sectionRef);
+export const Skills = forwardRef(function About(_, sectionRef: React.ForwardedRef<HTMLElement>): ReactElement {
+  const showSection = useAnimateOnScroll(sectionRef as RefObject<HTMLElement>);
 
   return (
     <Section
@@ -47,4 +46,4 @@ export function Skills(): ReactElement {
       </AnimatePresence>
     </Section>
   );
-}
+});

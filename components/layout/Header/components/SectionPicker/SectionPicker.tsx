@@ -32,10 +32,26 @@ export function SectionPicker(props: SectionPickerProps): ReactElement {
     <S.Wrapper>
       <S.CurrentSection className={isOpen ? "visible" : ""} role="menu">
         <S.DropdownButton {...buttonProps} isActive={isOpen}>
-          <MinorHeading noMargin>{sectionOptions[props.activeSection].title}</MinorHeading>
+          {sectionOptions.map(({ title }) => (
+            <AnimatePresence exitBeforeEnter>
+              {sectionOptions[props.activeSection].title === title && (
+                <MinorHeading
+                  variants={S.sectionPickerHeadingVariants}
+                  initial="entry"
+                  animate="animate"
+                  exit="exit"
+                  style={{ position: "absolute" }}
+                  noMargin
+                >
+                  {title}
+                </MinorHeading>
+              )}
+            </AnimatePresence>
+          ))}
           <S.IconWrapper
             variants={S.buttonVariants}
             animate={isOpen ? "active" : "normal"}
+            style={{ position: "absolute", right: 0 }}
           >
             <CaretCircleDown size={28} />
           </S.IconWrapper>

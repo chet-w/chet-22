@@ -19,6 +19,9 @@ export const DropdownButton = styled(motion.button)<DropdownButttonProps>`
   background: none;
   border: none;
   cursor: pointer;
+  width: 180px;
+  height: 36px;
+  position: relative;
 
   &:hover svg {
     transform: translateY(2px);
@@ -50,7 +53,7 @@ export const buttonVariants: Record<string, Variant> = {
 export const Options = styled(motion.ul)`
   position: fixed;
   top: 0.5rem;
-  left: 47vw;
+  left: 56vw;
   padding: 0;
   list-style: none;
   background: ${(props) => props.theme.colors.translucent.white};
@@ -98,5 +101,20 @@ export const optionVariants: Record<string, Variant> = {
   visible: {
     y: 0,
     opacity: 1,
+  },
+};
+
+export const sectionPickerHeadingVariants: Record<string, Variant> = {
+  entry: {
+    y: 25,
+    opacity: 0,
+  },
+  animate: {
+    y: 0,
+    opacity: 1,
+  },
+  exit: {
+    y: -25,
+    opacity: 0,
   },
 };

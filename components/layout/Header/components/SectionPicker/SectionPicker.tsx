@@ -54,6 +54,7 @@ export function SectionPicker(props: SectionPickerProps): ReactElement {
                   initial="hidden"
                   animate="visible"
                   exit="hidden"
+                  key={link}
                 >
                   <a {...itemProps[index]} href={link}>
                     {title}

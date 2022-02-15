@@ -33,7 +33,7 @@ export function SectionPicker(props: SectionPickerProps): ReactElement {
       <S.CurrentSection className={isOpen ? "visible" : ""} role="menu">
         <S.DropdownButton {...buttonProps} isActive={isOpen}>
           {sectionOptions.map(({ title }) => (
-            <AnimatePresence exitBeforeEnter>
+            <AnimatePresence exitBeforeEnter key={title}>
               {sectionOptions[props.activeSection].title === title && (
                 <MinorHeading
                   variants={S.sectionPickerHeadingVariants}

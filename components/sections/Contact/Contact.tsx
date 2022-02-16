@@ -24,7 +24,6 @@ export const Contact = forwardRef(function About(_, sectionRef: React.ForwardedR
             variants={S.sectionVariants}
             initial="entry"
             animate="visible"
-            exit="exit"
           >
             <Heading variants={S.sectionVariants}>
               <Accent>Contact</Accent>

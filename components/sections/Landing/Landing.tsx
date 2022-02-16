@@ -13,6 +13,7 @@ export function Landing(): ReactElement {
       crossAxis="start"
       mainAxis="center"
       size="big"
+      id="landing"
     >
       <Container direction="vertical">
         <Heading as="h1">

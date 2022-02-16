@@ -1,15 +1,13 @@
-import React, { ForwardedRef, forwardRef, ReactElement } from "react";
+import React, { ReactElement, forwardRef, RefObject } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Accent } from "../../typography/Accent";
-import { Heading } from "../../typography/Headings";
 import { Section } from "../../layout/Section";
+import { Heading } from "../../typography/Headings";
+import { Accent } from "../../typography/Accent";
 import { Paragraph } from "../../typography/Paragraph";
 import * as S from "./styles";
 import { useAnimateOnScroll } from "../../../hooks/useAnimateOnScroll";
-import { Ref } from "react";
-import { RefObject } from "react";
 
-export const About = forwardRef(function About(_, sectionRef: React.ForwardedRef<HTMLElement>): ReactElement {
+export const Skills = forwardRef(function About(_, sectionRef: React.ForwardedRef<HTMLElement>): ReactElement {
   const showSection = useAnimateOnScroll(sectionRef as RefObject<HTMLElement>);
 
   return (
@@ -18,7 +16,7 @@ export const About = forwardRef(function About(_, sectionRef: React.ForwardedRef
       crossAxis="start"
       mainAxis="start"
       ref={sectionRef}
-      id="about"
+      id="skills"
     >
       <AnimatePresence>
         {showSection && (
@@ -29,7 +27,7 @@ export const About = forwardRef(function About(_, sectionRef: React.ForwardedRef
             exit="exit"
           >
             <Heading variants={S.sectionVariants}>
-              <Accent>About me</Accent>
+              <Accent>Skills</Accent>
             </Heading>
             <Paragraph variants={S.sectionVariants}>
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore

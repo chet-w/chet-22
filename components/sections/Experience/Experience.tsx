@@ -4,10 +4,13 @@ import { Section } from "../../layout/Section";
 import { Heading } from "../../typography/Headings";
 import { Accent } from "../../typography/Accent";
 import { Paragraph } from "../../typography/Paragraph";
-import { useAnimateOnScroll } from "../../../hooks/useAnimateOnScroll";
+import { useAnimateOnScroll } from "@hooks/useAnimateOnScroll";
 import * as S from "./styles";
 
-export const Experience = forwardRef(function About(_, sectionRef: React.ForwardedRef<HTMLElement>): ReactElement {
+export const Experience = forwardRef(function About(
+  _,
+  sectionRef: React.ForwardedRef<HTMLElement>
+): ReactElement {
   const showSection = useAnimateOnScroll(sectionRef as RefObject<HTMLElement>);
 
   return (

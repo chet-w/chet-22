@@ -6,7 +6,7 @@ import { NameBanner } from "../../shared/NameBanner";
 import { Subheading } from "./../../typography/Headings";
 import { SectionPicker, HeaderLinks } from "./components";
 import * as S from "./styles";
-import { useScrollDistance } from "../../../hooks/useScrollDistance";
+import { useScrollDistance } from "@hooks/useScrollDistance";
 import { HeaderProps } from "./types";
 
 export function Header({ activeSection }: HeaderProps) {

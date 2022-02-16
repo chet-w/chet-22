@@ -5,8 +5,8 @@ import { Container } from "../../layout/Container";
 import { Heading, Subheading, MinorHeading } from "../../typography/Headings";
 import { Avatar } from "../../shared/Avatar";
 import { NameBanner } from "../../shared/NameBanner";
-import { useViewPortSize } from "../../../hooks/useViewPortSize";
-import { ViewportSize } from "../../../hooks/useViewPortSize/types";
+import { useViewPortSize } from "@hooks/useViewPortSize";
+import { ViewportSize } from "@hooks/useViewPortSize/types";
 
 export function Landing(): ReactElement {
   const viewPortSize = useViewPortSize();

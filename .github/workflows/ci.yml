@@ -1,0 +1,39 @@
+name: CI
+
+on: push
+jobs:
+    lint:
+        runs-on: ubuntu-latest
+        steps:
+            - name: 👨‍💻 Checkout code
+              uses: actions/checkout@v2
+            - name: 🟩 Setup Node
+              uses: actions/setup-node@v1
+            - name: 🔗 Install dependencies
+              run: yarn
+            - name: 🧹 Run lint
+              run: yarn lint
+
+    type_checks:
+        runs-on: ubuntu-latest
+        steps:
+            - name: 👨‍💻 Checkout code
+              uses: actions/checkout@v2
+            - name: 🟩 Setup Node
+              uses: actions/setup-node@v1
+            - name: 🔗 Install dependencies
+              run: yarn
+            - name: 📋 Check types
+              run: yarn tsc
+
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: 👨‍💻 Checkout code
+              uses: actions/checkout@v2
+            - name: 🟩 Setup Node
+              uses: actions/setup-node@v1
+            - name: 🔗 Install dependencies
+              run: yarn
+            - name: 🏗 Build app
+              run: yarn build

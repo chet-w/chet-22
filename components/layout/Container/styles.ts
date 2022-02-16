@@ -34,4 +34,8 @@ export const Container = styled.div<ContainerProps>`
         return "flex-start";
     }
   }};
+
+  @media (max-width: 425px) {
+    max-width: 375px;
+  }
 `;

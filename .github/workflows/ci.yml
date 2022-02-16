@@ -9,6 +9,8 @@ jobs:
               uses: actions/checkout@v2
             - name: 🟩 Setup Node
               uses: actions/setup-node@v1
+              with:
+                node-version: '16'
             - name: 🔗 Install dependencies
               run: yarn
             - name: 🧹 Run lint
@@ -21,6 +23,8 @@ jobs:
               uses: actions/checkout@v2
             - name: 🟩 Setup Node
               uses: actions/setup-node@v1
+              with:
+                node-version: '16'
             - name: 🔗 Install dependencies
               run: yarn
             - name: 📋 Check types
@@ -33,6 +37,8 @@ jobs:
               uses: actions/checkout@v2
             - name: 🟩 Setup Node
               uses: actions/setup-node@v1
+              with:
+                node-version: '16'
             - name: 🔗 Install dependencies
               run: yarn
             - name: 🏗 Build app

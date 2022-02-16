@@ -2,9 +2,11 @@ import { useEffect, RefObject, useState } from "react";
 import { useScrollDistance } from "../useScrollDistance";
 
 export function useAnimateOnScroll(
-  sectionRef: RefObject<HTMLElement> 
+  sectionRef: RefObject<HTMLElement>
 ): boolean {
   const [showSection, setShowSection] = useState(false);
+  const [hasSectionAlreadyAppeared, setHasSectionAlreadyAppeared] =
+    useState(false);
   const scrollDistance = useScrollDistance();
 
   useEffect(() => {
@@ -13,15 +15,17 @@ export function useAnimateOnScroll(
       const { height } = sectionRef.current.getBoundingClientRect();
 
       const topBoundary = offsetTop - height * 1.2;
-      const bottomBoundary = topBoundary + height * 1.4;
 
-      setShowSection(
-        scrollDistance > topBoundary && scrollDistance < bottomBoundary
-      );
+      if (scrollDistance > topBoundary) {
+        setShowSection(true);
+        setHasSectionAlreadyAppeared(true);
+      } else {
+        setShowSection(false);
+      }
     } else {
       setShowSection(false);
     }
-  }, [scrollDistance]);
+  }, [scrollDistance, hasSectionAlreadyAppeared]);
 
-  return showSection;
+  return showSection || hasSectionAlreadyAppeared;
 }

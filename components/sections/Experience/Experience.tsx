@@ -24,7 +24,6 @@ export const Experience = forwardRef(function About(_, sectionRef: React.Forward
             variants={S.sectionVariants}
             initial="entry"
             animate="visible"
-            exit="exit"
           >
             <Heading variants={S.sectionVariants}>
               <Accent>Experience</Accent>

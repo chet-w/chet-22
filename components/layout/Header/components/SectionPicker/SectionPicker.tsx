@@ -5,6 +5,7 @@ import { MinorHeading } from "../../../../typography/Headings";
 import { Section, SectionPickerProps } from "./types";
 import * as S from "./styles";
 import { AnimatePresence } from "framer-motion";
+import { useScrollDistance } from "@hooks/useScrollDistance";
 
 export function SectionPicker(props: SectionPickerProps): ReactElement {
   const sectionOptions: Section[] = [
@@ -27,6 +28,7 @@ export function SectionPicker(props: SectionPickerProps): ReactElement {
   ];
 
   const { buttonProps, itemProps, isOpen } = useDropdownMenu(2);
+  const { scrollDirection } = useScrollDistance();
 
   return (
     <S.Wrapper>
@@ -37,9 +39,9 @@ export function SectionPicker(props: SectionPickerProps): ReactElement {
               {sectionOptions[props.activeSection].title === title && (
                 <MinorHeading
                   variants={S.sectionPickerHeadingVariants}
-                  initial="entry"
+                  initial={scrollDirection === "down" ? "entry" : "exit"}
                   animate="animate"
-                  exit="exit"
+                  exit={scrollDirection === "down" ? "exit" : "entry"}
                   style={{ position: "absolute" }}
                   noMargin
                 >

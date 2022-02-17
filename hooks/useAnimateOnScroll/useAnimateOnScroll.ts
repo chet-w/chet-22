@@ -7,7 +7,7 @@ export function useAnimateOnScroll(
   const [showSection, setShowSection] = useState(false);
   const [hasSectionAlreadyAppeared, setHasSectionAlreadyAppeared] =
     useState(false);
-  const scrollDistance = useScrollDistance();
+  const { scrollDistance } = useScrollDistance();
 
   useEffect(() => {
     if (typeof window !== "undefined" && sectionRef?.current) {

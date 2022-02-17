@@ -5,11 +5,14 @@ import { Heading } from "../../typography/Headings";
 import { Section } from "../../layout/Section";
 import { Paragraph } from "../../typography/Paragraph";
 import * as S from "./styles";
-import { useAnimateOnScroll } from "../../../hooks/useAnimateOnScroll";
+import { useAnimateOnScroll } from "@hooks/useAnimateOnScroll";
 import { Ref } from "react";
 import { RefObject } from "react";
 
-export const About = forwardRef(function About(_, sectionRef: React.ForwardedRef<HTMLElement>): ReactElement {
+export const About = forwardRef(function About(
+  _,
+  sectionRef: React.ForwardedRef<HTMLElement>
+): ReactElement {
   const showSection = useAnimateOnScroll(sectionRef as RefObject<HTMLElement>);
 
   return (

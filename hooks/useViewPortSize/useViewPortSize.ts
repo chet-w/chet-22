@@ -8,7 +8,8 @@ export function useViewPortSize(): ViewportSize {
 
   function handleResize() {
     const { label } = ViewportSizeMapping.find(
-      ({ size }) => window.innerWidth <= size
+      ({ size, label }) =>
+        window.innerWidth <= size || label === ViewportSize.ExtraLarge
     )!;
     setCurrentSize(label);
   }

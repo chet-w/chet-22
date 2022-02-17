@@ -13,7 +13,7 @@ import { ViewportSize } from "@hooks/useViewPortSize/types";
 
 export function Header({ activeSection }: HeaderProps) {
   const [showHeader, setShowHeader] = useState(false);
-  const scrollDistance = useScrollDistance();
+  const { scrollDistance } = useScrollDistance();
   const viewPortSize = useViewPortSize();
 
   useEffect(() => {

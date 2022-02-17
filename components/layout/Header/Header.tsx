@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import { Container } from "../Container";
 import { Avatar } from "../../shared/Avatar";
@@ -8,10 +8,13 @@ import { SectionPicker, HeaderLinks } from "./components";
 import * as S from "./styles";
 import { useScrollDistance } from "@hooks/useScrollDistance";
 import { HeaderProps } from "./types";
+import { useViewPortSize } from "@hooks/useViewPortSize";
+import { ViewportSize } from "@hooks/useViewPortSize/types";
 
 export function Header({ activeSection }: HeaderProps) {
   const [showHeader, setShowHeader] = useState(false);
   const scrollDistance = useScrollDistance();
+  const viewPortSize = useViewPortSize();
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -42,8 +45,12 @@ export function Header({ activeSection }: HeaderProps) {
             <Subheading noMargin>
               <NameBanner />
             </Subheading>
-            <SectionPicker activeSection={activeSection} />
-            <HeaderLinks />
+            {viewPortSize > ViewportSize.Small && (
+              <Fragment>
+                <SectionPicker activeSection={activeSection} />
+                <HeaderLinks />
+              </Fragment>
+            )}
           </Container>
         </S.Header>
       )}

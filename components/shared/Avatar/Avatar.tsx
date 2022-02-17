@@ -16,6 +16,7 @@ export function Avatar(props: AvatarProps): ReactElement {
         src="/chet.jpg"
         width={sizeOptions[props.size]}
         height={sizeOptions[props.size]}
+        className={props.size}
       />
     </S.Wrapper>
   );

@@ -1,15 +1,15 @@
 export enum ViewportSize {
-  "ExtraSmall" = "xs",
-  "Small" = "sm",
-  "Medium" = "md",
-  "Large" = "lg",
-  "ExtraLarge" = "xl",
+  "ExtraSmall",
+  "Small",
+  "Medium",
+  "Large",
+  "ExtraLarge",
 }
 
-export const ViewportSizeMapping = {
-  [ViewportSize.ExtraSmall]: 320,
-  [ViewportSize.Small]: 425,
-  [ViewportSize.Medium]: 768,
-  [ViewportSize.Large]: 992,
-  [ViewportSize.ExtraLarge]: 1200,
-};
+export const ViewportSizeMapping = [
+  { label: ViewportSize.ExtraSmall, size: 320 },
+  { label: ViewportSize.Small, size: 425 },
+  { label: ViewportSize.Medium, size: 768 },
+  { label: ViewportSize.Large, size: 992 },
+  { label: ViewportSize.ExtraLarge, size: 1200 },
+];

@@ -28,7 +28,7 @@ export function Landing(): ReactElement {
         </Subheading>
         <MinorHeading>Wellington, New Zealand</MinorHeading>
       </Container>
-      {viewPortSize < ViewportSize.Medium ? <Avatar size="large" /> : <div />}
+      {viewPortSize > ViewportSize.Small ? <Avatar size="large" /> : <div />}
     </Section>
   );
 }

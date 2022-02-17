@@ -7,11 +7,10 @@ export function useViewPortSize(): ViewportSize {
   );
 
   function handleResize() {
-    const [breakpoint] = Object.entries(ViewportSizeMapping).filter(
-      ([_, width]) => window.innerWidth < width
-    );
-    const [breakpointLabel] = breakpoint;
-    setCurrentSize(breakpointLabel as ViewportSize);
+    const { label } = ViewportSizeMapping.find(
+      ({ size }) => window.innerWidth <= size
+    )!;
+    setCurrentSize(label);
   }
 
   useEffect(() => {

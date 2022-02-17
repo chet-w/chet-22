@@ -16,6 +16,7 @@ export function useViewPortSize(): ViewportSize {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
+      handleResize();
       window.addEventListener("resize", handleResize);
     }
     return () => window.removeEventListener("resize", handleResize);

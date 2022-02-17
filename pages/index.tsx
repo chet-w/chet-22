@@ -24,18 +24,20 @@ const Home: NextPage = () => {
       SkillsSectionRef,
       ContactSectionRef,
     ],
-    offsetPx: -100
+    offsetPx: -100,
   });
 
   return (
     <ThemeProvider theme={Theme}>
       <Head />
-      <Header activeSection={activeSection}/>
-      <Landing />
-      <About ref={AboutSectionRef} />
-      <Experience ref={ExperienceSectionRef}/>
-      <Skills ref={SkillsSectionRef}/>
-      <Contact ref={ContactSectionRef}/>
+      <Header activeSection={activeSection} />
+      <main>
+        <Landing />
+        <About ref={AboutSectionRef} />
+        <Experience ref={ExperienceSectionRef} />
+        <Skills ref={SkillsSectionRef} />
+        <Contact ref={ContactSectionRef} />
+      </main>
     </ThemeProvider>
   );
 };

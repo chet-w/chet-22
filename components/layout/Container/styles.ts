@@ -35,7 +35,19 @@ export const Container = styled.div<ContainerProps>`
     }
   }};
 
+  @media (max-width: 1200px) {
+    max-width: 992px;
+  }
+
+  @media (max-width: 992px) {
+    max-width: 768px;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 540px;
+  }
+
   @media (max-width: 425px) {
-    max-width: 375px;
+    max-width: 320px;
   }
 `;

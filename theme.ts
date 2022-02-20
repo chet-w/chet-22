@@ -7,6 +7,7 @@ export const Theme: DefaultTheme = {
     tertiary: "#58007A",
     translucent: {
       white: "rgba(255, 255, 255, 0.5)",
+      primary: "rgba(154, 0, 214, 0.04)",
     },
   },
 };

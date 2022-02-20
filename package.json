@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "framer-motion": "^6.2.6",
-    "next": "12.0.10",
+    "next": "12.1.0",
     "phosphor-react": "^1.4.0",
     "react": "17.0.2",
     "react-accessible-dropdown-menu-hook": "^3.2.0",

@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useRef } from "react";
+import React, { ReactElement, useEffect, useRef, useState } from "react";
 import {
   Heading,
   Subheading,
@@ -7,19 +7,27 @@ import {
 import { CarouselItem, CarouselProps } from "./types";
 import * as S from "./styles";
 import { useViewPortSize } from "@hooks/useViewPortSize";
+import { ViewportSizeMapping } from "@hooks/useViewPortSize/types";
 
 export function Carousel(props: CarouselProps): ReactElement {
   const carouselRef = useRef<HTMLDivElement>(null);
-  const leftOffset = useRef<number>(0);
+  const [leftOffset, setLeftOffset] = useState(0);
   const viewportSize = useViewPortSize();
 
+  function handleResize() {
+    const sectionOffset =
+      carouselRef.current!.parentElement?.getBoundingClientRect().left;
+    console.log({ sectionOffset });
+    setLeftOffset(sectionOffset || 0);
+  }
+
   useEffect(() => {
-    if (typeof window !== "undefined" && carouselRef.current !== null) {
-      const sectionOffset =
-        carouselRef.current.parentElement?.getBoundingClientRect().left;
-      leftOffset.current = sectionOffset || 0;
+    if (typeof window !== "undefined") {
+      handleResize();
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
     }
-  }, [carouselRef.current, viewportSize]);
+  }, []);
 
   function getDates(item: CarouselItem): string {
     if (!item.endDate) {
@@ -32,12 +40,14 @@ export function Carousel(props: CarouselProps): ReactElement {
     <S.Wrapper ref={carouselRef}>
       {props.items.map((item, index) => (
         <S.Item
+          key={`experience-carousel-${item}`}
           style={{
-            marginLeft: index === 0 ? leftOffset.current + "px" : "2rem",
+            marginLeft: index === 0 ? `calc(${leftOffset}px + 4rem)` : "2rem",
             marginRight:
               index === props.items.length - 1
-                ? leftOffset.current + "px"
+                ? `calc(${leftOffset}px + 6rem)`
                 : "2rem",
+            width: ViewportSizeMapping[viewportSize - 1].size + "px",
           }}
         >
           <Heading muted>{item.title}</Heading>

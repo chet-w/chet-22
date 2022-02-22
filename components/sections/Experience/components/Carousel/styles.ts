@@ -7,10 +7,10 @@ export const Wrapper = styled.div`
   position: absolute;
   left: 0;
   scroll-snap-type: x mandatory;
-  scroll-snap-align: start;
 `;
 
 export const Item = styled.article`
+  scroll-snap-align: center;
   margin: 1rem 2rem;
   padding: 2rem;
   min-width: 768px;

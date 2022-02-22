@@ -6,13 +6,11 @@ import {
 } from "../../../../typography/Headings";
 import { CarouselItem, CarouselProps } from "./types";
 import * as S from "./styles";
-import { useViewPortSize } from "@hooks/useViewPortSize";
-import { ViewportSizeMapping } from "@hooks/useViewPortSize/types";
+import { Paragraph } from "components/typography/Paragraph";
 
 export function Carousel(props: CarouselProps): ReactElement {
   const carouselRef = useRef<HTMLDivElement>(null);
   const [leftOffset, setLeftOffset] = useState(0);
-  const viewportSize = useViewPortSize();
 
   function handleResize() {
     const sectionOffset =
@@ -40,19 +38,30 @@ export function Carousel(props: CarouselProps): ReactElement {
     <S.Wrapper ref={carouselRef}>
       {props.items.map((item, index) => (
         <S.Item
-          key={`experience-carousel-${item}`}
+          key={`experience-carousel-${JSON.stringify(item)}`}
           style={{
             marginLeft: index === 0 ? `calc(${leftOffset}px + 4rem)` : "2rem",
             marginRight:
               index === props.items.length - 1
                 ? `calc(${leftOffset}px + 6rem)`
                 : "2rem",
-            width: ViewportSizeMapping[viewportSize - 1].size + "px",
           }}
         >
           <Heading muted>{item.title}</Heading>
           <Subheading muted>{item.position}</Subheading>
           <MinorHeading as="h4">{getDates(item)}</MinorHeading>
+          <Paragraph>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum
+            excepturi consequatur perferendis dolorem voluptatum numquam et
+            suscipit, atque laudantium incidunt hic? Corrupti sequi voluptate
+            eligendi magni earum minima qui voluptates.
+          </Paragraph>
+          <Paragraph>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum
+            excepturi consequatur perferendis dolorem voluptatum numquam et
+            suscipit, atque laudantium incidunt hic? Corrupti sequi voluptate
+            eligendi magni earum minima qui voluptates.
+          </Paragraph>
         </S.Item>
       ))}
     </S.Wrapper>

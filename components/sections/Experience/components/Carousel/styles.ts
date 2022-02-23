@@ -16,6 +16,7 @@ export const Item = styled.article`
   min-width: 992px;
   background: ${(props) => props.theme.colors.translucent.primary};
   border-radius: 1.5rem;
+  transition: all 0.2s ease;
 
   @media (max-width: 1200px) {
     max-width: 992px;

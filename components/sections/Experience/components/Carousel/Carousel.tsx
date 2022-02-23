@@ -10,13 +10,31 @@ import { Paragraph } from "components/typography/Paragraph";
 
 export function Carousel(props: CarouselProps): ReactElement {
   const carouselRef = useRef<HTMLDivElement>(null);
+  const carouselItems = useRef<any>(null);
   const [leftOffset, setLeftOffset] = useState(0);
 
   function handleResize() {
     const sectionOffset =
       carouselRef.current!.parentElement?.getBoundingClientRect().left;
-    console.log({ sectionOffset });
     setLeftOffset(sectionOffset || 0);
+  }
+
+  function handleScroll(event: Event) {
+    if (carouselItems.current) {
+      carouselItems.current.forEach(
+        (node: any) => (node.style.transform = "scale(0.8)")
+      );
+      const xCoords: { node: HTMLDivElement; x: number }[] =
+        carouselItems.current.map((item: HTMLDivElement) => ({
+          node: item,
+          x: item.getBoundingClientRect().x,
+        }));
+      const closestNode = xCoords.find(({ x }) => x > 0);
+      if (closestNode) {
+        closestNode.node.style.transform = "scale(1.1)";
+      }
+      console.log(xCoords);
+    }
   }
 
   useEffect(() => {
@@ -24,6 +42,17 @@ export function Carousel(props: CarouselProps): ReactElement {
       handleResize();
       window.addEventListener("resize", handleResize);
       return () => window.removeEventListener("resize", handleResize);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && carouselRef.current) {
+      carouselRef.current.addEventListener("scroll", handleScroll);
+      carouselItems.current = Array.from(carouselRef.current.childNodes);
+      console.log(carouselItems.current);
+
+      return () =>
+        carouselRef.current!.removeEventListener("scroll", handleScroll);
     }
   }, []);
 

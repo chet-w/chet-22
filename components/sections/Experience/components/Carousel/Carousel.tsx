@@ -12,6 +12,7 @@ export function Carousel(props: CarouselProps): ReactElement {
   const carouselRef = useRef<HTMLDivElement>(null);
   const carouselItems = useRef<any>(null);
   const [leftOffset, setLeftOffset] = useState(0);
+  const [currentItemIndex, setCurrentItemIndex] = useState(0);
 
   function handleResize() {
     const sectionOffset =
@@ -21,19 +22,13 @@ export function Carousel(props: CarouselProps): ReactElement {
 
   function handleScroll(event: Event) {
     if (carouselItems.current) {
-      carouselItems.current.forEach(
-        (node: any) => (node.style.transform = "scale(0.8)")
-      );
       const xCoords: { node: HTMLDivElement; x: number }[] =
         carouselItems.current.map((item: HTMLDivElement) => ({
           node: item,
           x: item.getBoundingClientRect().x,
         }));
-      const closestNode = xCoords.find(({ x }) => x > 0);
-      if (closestNode) {
-        closestNode.node.style.transform = "scale(1.1)";
-      }
-      console.log(xCoords);
+      const currentIndex = xCoords.findIndex(({ x }) => x > 0);
+      setCurrentItemIndex(currentIndex);
     }
   }
 

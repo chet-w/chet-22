@@ -43,6 +43,7 @@ export const Experience = forwardRef(function About(
       mainAxis="start"
       ref={sectionRef}
       id="experience"
+      size="big"
     >
       <AnimatePresence>
         {showSection && (

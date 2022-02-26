@@ -4,6 +4,7 @@ import { Section } from "../../layout/Section";
 import { Heading } from "../../typography/Headings";
 import { Accent } from "../../typography/Accent";
 import { Carousel } from "./components/Carousel";
+import { Container } from "components/layout/Container";
 import { useAnimateOnScroll } from "@hooks/useAnimateOnScroll";
 import * as S from "./styles";
 import { CarouselItem } from "./components/Carousel/types";
@@ -19,6 +20,7 @@ export const Experience = forwardRef(function About(
       position: "Front-End Developer",
       startDate: "July 2021",
       description: "yeet",
+      icon: "/experience/hazardco.png",
     },
     {
       title: "Hnry",
@@ -26,13 +28,15 @@ export const Experience = forwardRef(function About(
       startDate: "November 2019",
       endDate: "June 2021",
       description: "yeet",
+      icon: "/experience/hnry.png",
     },
     {
-      title: "HazardCo",
-      position: "Front-End Developer",
+      title: "Epi-interactive",
+      position: "Full-Stack Developer",
       startDate: "July 2018",
-      endDate: "Novemeber 2019",
+      endDate: "November 2019",
       description: "yeet",
+      icon: "/experience/epi-interactive.svg",
     },
   ];
 
@@ -44,6 +48,7 @@ export const Experience = forwardRef(function About(
       ref={sectionRef}
       id="experience"
       size="big"
+      noContainer
     >
       <AnimatePresence>
         {showSection && (
@@ -51,10 +56,13 @@ export const Experience = forwardRef(function About(
             variants={S.sectionVariants}
             initial="entry"
             animate="visible"
+            style={{ width: "100%" }}
           >
-            <Heading variants={S.sectionVariants}>
-              <Accent>Experience</Accent>
-            </Heading>
+            <Container>
+              <Heading variants={S.sectionVariants}>
+                <Accent>Experience</Accent>
+              </Heading>
+            </Container>
             <Carousel items={jobs} />
           </motion.div>
         )}

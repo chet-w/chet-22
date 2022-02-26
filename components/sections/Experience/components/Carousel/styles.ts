@@ -4,8 +4,6 @@ export const Wrapper = styled.div`
   display: flex;
   width: 100vw;
   overflow-x: auto;
-  position: absolute;
-  left: 0;
   scroll-snap-type: x mandatory;
 `;
 
@@ -38,3 +36,7 @@ export const Item = styled.article`
     min-width: 320px;
   }
 `;
+
+export const IconWrapper = styled.div``;
+
+export const Icon = styled.div``;

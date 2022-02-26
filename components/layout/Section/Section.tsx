@@ -4,12 +4,16 @@ import { SectionProps } from "./types";
 import { Container } from "../Container";
 
 export const Section = forwardRef(function Section(
-  { children, size = "normal", ...containerProps }: SectionProps,
+  { children, size = "normal", noContainer, ...containerProps }: SectionProps,
   ref: React.ForwardedRef<HTMLElement>
 ) {
   return (
     <S.Section size={size} ref={ref}>
-      <Container {...containerProps}>{children}</Container>
+      {noContainer ? (
+        children
+      ) : (
+        <Container {...containerProps}>{children}</Container>
+      )}
     </S.Section>
   );
 });

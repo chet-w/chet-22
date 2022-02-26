@@ -8,4 +8,5 @@ export interface CarouselItem {
   startDate: string;
   endDate?: string;
   description: string;
+  icon: string;
 }

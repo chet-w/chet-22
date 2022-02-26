@@ -1,4 +1,11 @@
-import React, { ReactElement, useEffect, useRef, useState } from "react";
+import React, {
+  Fragment,
+  ReactElement,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+import Image from "next/image";
 import {
   Heading,
   Subheading,
@@ -16,7 +23,7 @@ export function Carousel(props: CarouselProps): ReactElement {
 
   function handleResize() {
     const sectionOffset =
-      carouselRef.current!.parentElement?.getBoundingClientRect().left;
+      carouselRef.current?.previousElementSibling!.getBoundingClientRect().left;
     setLeftOffset(sectionOffset || 0);
   }
 
@@ -44,7 +51,6 @@ export function Carousel(props: CarouselProps): ReactElement {
     if (typeof window !== "undefined" && carouselRef.current) {
       carouselRef.current.addEventListener("scroll", handleScroll);
       carouselItems.current = Array.from(carouselRef.current.childNodes);
-      console.log(carouselItems.current);
 
       return () =>
         carouselRef.current!.removeEventListener("scroll", handleScroll);
@@ -59,35 +65,46 @@ export function Carousel(props: CarouselProps): ReactElement {
   }
 
   return (
-    <S.Wrapper ref={carouselRef}>
-      {props.items.map((item, index) => (
-        <S.Item
-          key={`experience-carousel-${JSON.stringify(item)}`}
-          style={{
-            marginLeft: index === 0 ? `calc(${leftOffset}px + 4rem)` : "2rem",
-            marginRight:
-              index === props.items.length - 1
-                ? `calc(${leftOffset}px + 6rem)`
-                : "2rem",
-          }}
-        >
-          <Heading muted>{item.title}</Heading>
-          <Subheading muted>{item.position}</Subheading>
-          <MinorHeading as="h4">{getDates(item)}</MinorHeading>
-          <Paragraph>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum
-            excepturi consequatur perferendis dolorem voluptatum numquam et
-            suscipit, atque laudantium incidunt hic? Corrupti sequi voluptate
-            eligendi magni earum minima qui voluptates.
-          </Paragraph>
-          <Paragraph>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum
-            excepturi consequatur perferendis dolorem voluptatum numquam et
-            suscipit, atque laudantium incidunt hic? Corrupti sequi voluptate
-            eligendi magni earum minima qui voluptates.
-          </Paragraph>
-        </S.Item>
-      ))}
-    </S.Wrapper>
+    <Fragment>
+      <S.Wrapper ref={carouselRef}>
+        {props.items.map((item, index) => (
+          <S.Item
+            key={`experience-carousel-${JSON.stringify(item)}`}
+            style={{
+              marginLeft: index === 0 ? `calc(${leftOffset}px + 4rem)` : "2rem",
+              marginRight:
+                index === props.items.length - 1
+                  ? `calc(${leftOffset}px + 6rem)`
+                  : "2rem",
+            }}
+          >
+            <Heading muted>{item.title}</Heading>
+            <Subheading muted>{item.position}</Subheading>
+            <MinorHeading as="h4">{getDates(item)}</MinorHeading>
+            <Paragraph>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum
+              excepturi consequatur perferendis dolorem voluptatum numquam et
+              suscipit, atque laudantium incidunt hic? Corrupti sequi voluptate
+              eligendi magni earum minima qui voluptates.
+            </Paragraph>
+            <Paragraph>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum
+              excepturi consequatur perferendis dolorem voluptatum numquam et
+              suscipit, atque laudantium incidunt hic? Corrupti sequi voluptate
+              eligendi magni earum minima qui voluptates.
+            </Paragraph>
+          </S.Item>
+        ))}
+        <S.IconWrapper>
+          {props.items
+            .map(({ icon }) => icon)
+            .map((icon) => (
+              <S.Icon>
+                <Image src={icon} width={150} height={150} />
+              </S.Icon>
+            ))}
+        </S.IconWrapper>
+      </S.Wrapper>
+    </Fragment>
   );
 }

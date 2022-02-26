@@ -5,6 +5,7 @@ export interface SectionProps extends StyledSectionProps {
   direction: "vertical" | "horizontal";
   crossAxis?: "center" | "start" | "end";
   mainAxis?: "center" | "start" | "end";
+  noContainer?: boolean;
   id: string;
 }
 

@@ -3,8 +3,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Section } from "@layout/Section";
 import { Heading } from "@typography/Headings";
 import { Accent } from "@typography/Accent";
-import { Paragraph } from "@typography/Paragraph";
 import { useAnimateOnScroll } from "@hooks/useAnimateOnScroll";
+import { Coverflow } from "./components/Coverflow";
+import { Skill } from "./types";
 import * as S from "./styles";
 
 export const Skills = forwardRef(function About(
@@ -12,6 +13,29 @@ export const Skills = forwardRef(function About(
   sectionRef: React.ForwardedRef<HTMLElement>
 ): ReactElement {
   const showSection = useAnimateOnScroll(sectionRef as RefObject<HTMLElement>);
+
+  const skills: Skill[] = [
+    {
+      title: "React",
+      icon: "/experience/hazardco.png",
+    },
+    {
+      title: "React",
+      icon: "/experience/hazardco.png",
+    },
+    {
+      title: "React",
+      icon: "/experience/hazardco.png",
+    },
+    {
+      title: "React",
+      icon: "/experience/hazardco.png",
+    },
+    {
+      title: "React",
+      icon: "/experience/hazardco.png",
+    },
+  ];
 
   return (
     <Section
@@ -27,22 +51,12 @@ export const Skills = forwardRef(function About(
             variants={S.sectionVariants}
             initial="entry"
             animate="visible"
+            style={{ width: "100%" }}
           >
             <Heading variants={S.sectionVariants}>
               <Accent>Skills</Accent>
             </Heading>
-            <Paragraph variants={S.sectionVariants}>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore
-              consequatur libero blanditiis cum, consequuntur sint nobis ea
-              voluptatem at perspiciatis obcaecati eveniet consectetur saepe
-              tempore ex est optio? Inventore, eveniet.
-            </Paragraph>
-            <Paragraph variants={S.sectionVariants}>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore
-              consequatur libero blanditiis cum, consequuntur sint nobis ea
-              voluptatem at perspiciatis obcaecati eveniet consectetur saepe
-              tempore ex est optio? Inventore, eveniet.
-            </Paragraph>
+            <Coverflow items={skills} />
           </motion.div>
         )}
       </AnimatePresence>

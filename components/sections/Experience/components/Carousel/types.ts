@@ -10,3 +10,7 @@ export interface CarouselItem {
   description: string;
   icon: string;
 }
+
+export interface ItemProps {
+  active?: boolean;
+}

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ItemProps } from "./types";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -7,14 +8,16 @@ export const Wrapper = styled.div`
   scroll-snap-type: x mandatory;
 `;
 
-export const Item = styled.article`
+export const Item = styled.article<ItemProps>`
   scroll-snap-align: center;
   margin: 1rem 2rem;
   padding: 2rem;
   min-width: 992px;
   background: ${(props) => props.theme.colors.translucent.primary};
   border-radius: 1.5rem;
-  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
   @media (max-width: 1200px) {
     max-width: 992px;
@@ -36,7 +39,3 @@ export const Item = styled.article`
     min-width: 320px;
   }
 `;
-
-export const IconWrapper = styled.div``;
-
-export const Icon = styled.div``;

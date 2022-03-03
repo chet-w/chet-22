@@ -56,7 +56,7 @@ export const Experience = forwardRef(function About(
             variants={S.sectionVariants}
             initial="entry"
             animate="visible"
-            style={{ width: "100%" }}
+            style={{ position: "relative" }}
           >
             <Container>
               <Heading variants={S.sectionVariants}>

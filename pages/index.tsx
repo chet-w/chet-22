@@ -1,15 +1,15 @@
+import { useRef } from "react";
 import { NextPage } from "next";
 import { ThemeProvider } from "styled-components";
 import useScrollSpy from "react-use-scrollspy";
-import { Head } from "../components/utilities/Head";
-import { Landing } from "../components/sections/Landing";
-import { Header } from "../components/layout/Header";
-import { About } from "../components/sections/About";
-import { Experience } from "../components/sections/Experience";
-import { Skills } from "../components/sections/Skills";
-import { Contact } from "../components/sections/Contact";
+import { Header } from "@layout/Header";
+import { About } from "@sections/About";
+import { Contact } from "@sections/Contact";
+import { Experience } from "@sections/Experience";
+import { Landing } from "@sections/Landing";
+import { Skills } from "@sections/Skills";
+import { Head } from "@utilities/Head";
 import { Theme } from "../theme";
-import { useRef } from "react";
 
 const Home: NextPage = () => {
   const AboutSectionRef = useRef(null);

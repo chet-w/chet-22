@@ -1,13 +1,13 @@
 import React, { forwardRef, ReactElement, RefObject } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Section } from "../../layout/Section";
-import { Heading } from "../../typography/Headings";
-import { Accent } from "../../typography/Accent";
-import { Carousel } from "./components/Carousel";
-import { Container } from "components/layout/Container";
+import { Section } from "@layout/Section";
+import { Container } from "@layout/Container";
+import { Heading } from "@typography/Headings";
+import { Accent } from "@typography/Accent";
 import { useAnimateOnScroll } from "@hooks/useAnimateOnScroll";
-import * as S from "./styles";
+import { Carousel } from "./components/Carousel";
 import { CarouselItem } from "./components/Carousel/types";
+import * as S from "./styles";
 
 export const Experience = forwardRef(function About(
   _,

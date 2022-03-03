@@ -1,5 +1,5 @@
 import { useEffect, RefObject, useState } from "react";
-import { useScrollDistance } from "../useScrollDistance";
+import { useScrollDistance } from "@hooks/useScrollDistance";
 
 export function useAnimateOnScroll(
   sectionRef: RefObject<HTMLElement>

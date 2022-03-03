@@ -1,11 +1,11 @@
 import React, { ReactElement } from "react";
 import { CaretCircleDown } from "phosphor-react";
+import { AnimatePresence } from "framer-motion";
 import useDropdownMenu from "react-accessible-dropdown-menu-hook";
-import { MinorHeading } from "../../../../typography/Headings";
+import { MinorHeading } from "@typography/Headings";
+import { useScrollDistance } from "@hooks/useScrollDistance";
 import { Section, SectionPickerProps } from "./types";
 import * as S from "./styles";
-import { AnimatePresence } from "framer-motion";
-import { useScrollDistance } from "@hooks/useScrollDistance";
 
 export function SectionPicker(props: SectionPickerProps): ReactElement {
   const sectionOptions: Section[] = [

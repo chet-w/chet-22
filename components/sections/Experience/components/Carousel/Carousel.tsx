@@ -6,14 +6,10 @@ import React, {
   useState,
 } from "react";
 import Image from "next/image";
-import {
-  Heading,
-  Subheading,
-  MinorHeading,
-} from "../../../../typography/Headings";
+import { Heading, Subheading, MinorHeading } from "@typography/Headings";
+import { Paragraph } from "@typography/Paragraph";
 import { CarouselItem, CarouselProps } from "./types";
 import * as S from "./styles";
-import { Paragraph } from "components/typography/Paragraph";
 
 export function Carousel(props: CarouselProps): ReactElement {
   const carouselRef = useRef<HTMLDivElement>(null);

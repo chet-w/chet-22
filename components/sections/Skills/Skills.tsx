@@ -1,11 +1,11 @@
 import React, { ReactElement, forwardRef, RefObject } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Section } from "../../layout/Section";
-import { Heading } from "../../typography/Headings";
-import { Accent } from "../../typography/Accent";
-import { Paragraph } from "../../typography/Paragraph";
-import * as S from "./styles";
+import { Section } from "@layout/Section";
+import { Heading } from "@typography/Headings";
+import { Accent } from "@typography/Accent";
+import { Paragraph } from "@typography/Paragraph";
 import { useAnimateOnScroll } from "@hooks/useAnimateOnScroll";
+import * as S from "./styles";
 
 export const Skills = forwardRef(function About(
   _,

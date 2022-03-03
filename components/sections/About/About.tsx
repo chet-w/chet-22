@@ -1,13 +1,11 @@
-import React, { ForwardedRef, forwardRef, ReactElement } from "react";
+import React, { RefObject, forwardRef, ReactElement } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Accent } from "../../typography/Accent";
-import { Heading } from "../../typography/Headings";
-import { Section } from "../../layout/Section";
-import { Paragraph } from "../../typography/Paragraph";
-import * as S from "./styles";
+import { Section } from "@layout/Section";
+import { Accent } from "@typography/Accent";
+import { Heading } from "@typography/Headings";
+import { Paragraph } from "@typography/Paragraph";
 import { useAnimateOnScroll } from "@hooks/useAnimateOnScroll";
-import { Ref } from "react";
-import { RefObject } from "react";
+import * as S from "./styles";
 
 export const About = forwardRef(function About(
   _,

@@ -1,15 +1,15 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
-import { Container } from "../Container";
-import { Avatar } from "../../shared/Avatar";
-import { NameBanner } from "../../shared/NameBanner";
-import { Subheading } from "./../../typography/Headings";
-import { SectionPicker, HeaderLinks } from "./components";
-import * as S from "./styles";
+import { Container } from "@layout/Container";
+import { Avatar } from "@shared/Avatar";
+import { NameBanner } from "@shared/NameBanner";
+import { Subheading } from "@typography/Headings";
 import { useScrollDistance } from "@hooks/useScrollDistance";
-import { HeaderProps } from "./types";
 import { useViewPortSize } from "@hooks/useViewPortSize";
 import { ViewportSize } from "@hooks/useViewPortSize/types";
+import { SectionPicker, HeaderLinks } from "./components";
+import { HeaderProps } from "./types";
+import * as S from "./styles";
 
 export function Header({ activeSection }: HeaderProps) {
   const [showHeader, setShowHeader] = useState(false);

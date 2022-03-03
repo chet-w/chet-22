@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Container } from "../Container";
+import { Container } from "@layout/Container";
 import { StyledSectionProps } from "./types";
 
 export const Section = styled.section<StyledSectionProps>`

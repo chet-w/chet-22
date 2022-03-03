@@ -1,7 +1,7 @@
 import React, { forwardRef } from "react";
-import * as S from "./styles";
+import { Container } from "@layout/Container";
 import { SectionProps } from "./types";
-import { Container } from "../Container";
+import * as S from "./styles";
 
 export const Section = forwardRef(function Section(
   { children, size = "normal", noContainer, ...containerProps }: SectionProps,

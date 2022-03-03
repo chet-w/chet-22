@@ -1,10 +1,10 @@
 import React, { ReactElement } from "react";
-import { Section } from "../../layout/Section";
-import { Accent } from "../../typography/Accent";
-import { Container } from "../../layout/Container";
-import { Heading, Subheading, MinorHeading } from "../../typography/Headings";
-import { Avatar } from "../../shared/Avatar";
-import { NameBanner } from "../../shared/NameBanner";
+import { Section } from "@layout/Section";
+import { Container } from "@layout/Container";
+import { Avatar } from "@shared/Avatar";
+import { NameBanner } from "@shared/NameBanner";
+import { Accent } from "@typography/Accent";
+import { Heading, Subheading, MinorHeading } from "@typography/Headings";
 import { useViewPortSize } from "@hooks/useViewPortSize";
 import { ViewportSize } from "@hooks/useViewPortSize/types";
 

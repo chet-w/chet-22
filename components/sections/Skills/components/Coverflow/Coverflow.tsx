@@ -7,7 +7,10 @@ export function Coverflow(props: CoverflowProps): ReactElement {
   return (
     <S.Wrapper>
       {props.items.map((item, index) => (
-        <Cover {...{ item, index, listLength: props.items.length }} />
+        <Cover
+          key={`Coverflow-item-${index}`}
+          {...{ item, index, listLength: props.items.length }}
+        />
       ))}
     </S.Wrapper>
   );

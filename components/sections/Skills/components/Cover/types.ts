@@ -4,4 +4,5 @@ export interface CoverProps {
   item: Skill;
   index: number;
   listLength: number;
+  activeIndex: number;
 }

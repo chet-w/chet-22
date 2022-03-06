@@ -15,14 +15,22 @@ export function Cover(props: CoverProps): ReactElement {
   const [zIndex, setZIndex] = useState(500);
 
   useEffect(() => {
-    setCenterOfList(Helpers.determineCenterOfList(props.listLength));
+    setCenterOfList(props.activeIndex);
     setLevel(Helpers.determineLevel(props.index, centerOfList));
     setBaseRotation(Helpers.determineBaseRotation(props.index, centerOfList));
     setAbsoluteRotation(Helpers.determineAbsoluteRotation(level, baseRotation));
     setAbsoluteTranslation(Helpers.determineAbsoluteTranslation(level));
     setScale(Helpers.determineScale(level));
     setZIndex(Helpers.determineZIndex(level));
-  }, [level, centerOfList, baseRotation, absoluteTranslation, scale, zIndex]);
+  }, [
+    level,
+    centerOfList,
+    baseRotation,
+    absoluteTranslation,
+    scale,
+    zIndex,
+    props.activeIndex,
+  ]);
 
   return (
     <div
@@ -30,6 +38,8 @@ export function Cover(props: CoverProps): ReactElement {
         transform: `rotate3d(0, 1, 0, ${absoluteRotation}deg) translateX(${absoluteTranslation}px)  scale(${scale})`,
         position: "relative",
         zIndex,
+        opacity: scale,
+        transition: "all 0.2s ease",
       }}
     >
       <S.Cover>

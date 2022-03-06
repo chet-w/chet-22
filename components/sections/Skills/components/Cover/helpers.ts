@@ -1,19 +1,4 @@
 /**
- * Given a length of a list, determines which index is the center
- * point (rounded up) of the list.
- *
- * @param {number} length Length of the list.
- * @throws A standard error if the length is 0 or falsy.
- * @returns The center index of the list.
- */
-export function determineCenterOfList(length: number): number {
-  if (!length) {
-    throw new Error(`A list with length ${length} can't have a center`);
-  }
-  return Math.ceil((length - 1) / 2);
-}
-
-/**
  * Determines the `level` of an item at a given index with respect to the
  * center of the list. The `level` denotes how many items way from the
  * center of the list the provided index is.

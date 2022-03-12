@@ -7,13 +7,20 @@ import { useElementScroll } from "framer-motion";
 export function Coverflow(props: CoverflowProps): ReactElement {
   const ScrollerRef = useRef(null);
   const [scrollPercentage, setScrollPercentage] = useState(0);
-  const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [offsetDistance, setOffsetDistance] = useState(0);
   const { scrollXProgress } = useElementScroll(ScrollerRef);
 
   useEffect(() => {
     scrollXProgress.set(50);
     scrollXProgress.onChange((distance) => setScrollPercentage(distance));
   }, []);
+
+  useEffect(() => {
+    const centerOfList = Math.ceil(props.items.length / 2) - 1;
+    const offset = activeIndex - centerOfList;
+    setOffsetDistance(offset * -175);
+  }, [activeIndex]);
 
   useEffect(() => {
     const index = Math.ceil(props.items.length * scrollPercentage) - 1;
@@ -24,7 +31,7 @@ export function Coverflow(props: CoverflowProps): ReactElement {
   return (
     <S.Wrapper ref={ScrollerRef}>
       <S.ScrollContent>
-        <S.StickyContent>
+        <S.StickyContent offset={offsetDistance}>
           {props.items.map((item, index) => (
             <Cover
               key={`Coverflow-item-${index}`}

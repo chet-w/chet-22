@@ -4,6 +4,7 @@ import { CoverflowProps } from "./types";
 import { Cover } from "../Cover";
 import * as S from "./styles";
 import * as Helpers from "./helpers";
+import { useViewPortSize } from "@hooks/useViewPortSize";
 
 export function Coverflow(props: CoverflowProps): ReactElement {
   const ScrollerRef = useRef(null);
@@ -11,6 +12,8 @@ export function Coverflow(props: CoverflowProps): ReactElement {
   const [activeIndex, setActiveIndex] = useState(0);
   const [offsetDistance, setOffsetDistance] = useState(0);
   const { scrollXProgress } = useElementScroll(ScrollerRef);
+  const viewportSize = useViewPortSize();
+  console.log(viewportSize);
 
   useEffect(() => {
     scrollXProgress.set(50);
@@ -19,7 +22,11 @@ export function Coverflow(props: CoverflowProps): ReactElement {
 
   useEffect(() => {
     setOffsetDistance(
-      Helpers.determineOffsetDistance(activeIndex, props.items.length)
+      Helpers.determineOffsetDistance(
+        activeIndex,
+        props.items.length,
+        viewportSize
+      )
     );
   }, [activeIndex]);
 

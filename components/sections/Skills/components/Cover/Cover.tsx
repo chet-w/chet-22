@@ -4,6 +4,7 @@ import { MinorHeading } from "@typography/Headings";
 import { CoverProps } from "./types";
 import * as S from "./styles";
 import * as Helpers from "./helpers";
+import { useViewPortSize } from "@hooks/useViewPortSize";
 
 export function Cover(props: CoverProps): ReactElement {
   const [level, setLevel] = useState(1);
@@ -13,13 +14,18 @@ export function Cover(props: CoverProps): ReactElement {
   const [absoluteTranslation, setAbsoluteTranslation] = useState(1);
   const [scale, setScale] = useState(1);
   const [zIndex, setZIndex] = useState(500);
+  const viewportSize = useViewPortSize();
+
+  console.log(viewportSize);
 
   useEffect(() => {
     setCenterOfList(props.activeIndex);
     setLevel(Helpers.determineLevel(props.index, centerOfList));
     setBaseRotation(Helpers.determineBaseRotation(props.index, centerOfList));
     setAbsoluteRotation(Helpers.determineAbsoluteRotation(level, baseRotation));
-    setAbsoluteTranslation(Helpers.determineAbsoluteTranslation(level));
+    setAbsoluteTranslation(
+      Helpers.determineAbsoluteTranslation(level, viewportSize)
+    );
     setScale(Helpers.determineScale(level));
     setZIndex(Helpers.determineZIndex(level));
   }, [

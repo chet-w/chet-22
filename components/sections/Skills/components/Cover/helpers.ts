@@ -1,3 +1,6 @@
+import { ViewportSize } from "@hooks/useViewPortSize/types";
+import { CoverTranslations } from "./types";
+
 /**
  * Determines the `level` of an item at a given index with respect to the
  * center of the list. The `level` denotes how many items way from the
@@ -49,8 +52,11 @@ export function determineAbsoluteRotation(level: number, base: number): number {
  * @param {number} level Level of the item to determine translation for.
  * @returns A translation amount in pixels. Negative for positive levels, positive for negative levels.
  */
-export function determineAbsoluteTranslation(level: number): number {
-  return level * (-100 - Math.abs(level) * 10);
+export function determineAbsoluteTranslation(
+  level: number,
+  viewportSize: ViewportSize
+): number {
+  return level * (-CoverTranslations[viewportSize] - Math.abs(level) * 10);
 }
 
 /**

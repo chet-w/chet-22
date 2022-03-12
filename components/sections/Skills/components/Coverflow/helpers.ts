@@ -1,3 +1,6 @@
+import { ViewportSize } from "@hooks/useViewPortSize/types";
+import { CoverflowOffsets } from "./types";
+
 /**
  * Determines the distance that the Coverflow component should
  * be moved across (left or right) such that the item at the `activeIndex`
@@ -9,9 +12,14 @@
  */
 export function determineOffsetDistance(
   activeIndex: number,
-  length: number
+  length: number,
+  viewportSize: ViewportSize
 ): number {
-  return (activeIndex - determineCenterOfList(length)) * -200;
+  return (
+    (activeIndex - determineCenterOfList(length)) *
+    -1 *
+    CoverflowOffsets[viewportSize]
+  );
 }
 
 /**

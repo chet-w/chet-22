@@ -50,7 +50,7 @@ export function determineAbsoluteRotation(level: number, base: number): number {
  * @returns A translation amount in pixels. Negative for positive levels, positive for negative levels.
  */
 export function determineAbsoluteTranslation(level: number): number {
-  return -1 * level * 100;
+  return level * (-100 - Math.abs(level) * 10);
 }
 
 /**

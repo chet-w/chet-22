@@ -1,8 +1,9 @@
 import { ReactElement, useEffect, useRef, useState } from "react";
+import { useElementScroll } from "framer-motion";
 import { CoverflowProps } from "./types";
 import { Cover } from "../Cover";
 import * as S from "./styles";
-import { useElementScroll } from "framer-motion";
+import * as Helpers from "./helpers";
 
 export function Coverflow(props: CoverflowProps): ReactElement {
   const ScrollerRef = useRef(null);
@@ -17,15 +18,15 @@ export function Coverflow(props: CoverflowProps): ReactElement {
   }, []);
 
   useEffect(() => {
-    const centerOfList = Math.ceil(props.items.length / 2) - 1;
-    const offset = activeIndex - centerOfList;
-    setOffsetDistance(offset * -175);
+    setOffsetDistance(
+      Helpers.determineOffsetDistance(activeIndex, props.items.length)
+    );
   }, [activeIndex]);
 
   useEffect(() => {
-    const index = Math.ceil(props.items.length * scrollPercentage) - 1;
-    const adjusted = index > -1 ? index : 0;
-    setActiveIndex(adjusted);
+    setActiveIndex(
+      Helpers.determineActiveIndex(props.items.length, scrollPercentage)
+    );
   }, [scrollPercentage, scrollXProgress]);
 
   return (

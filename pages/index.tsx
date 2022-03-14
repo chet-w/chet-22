@@ -33,10 +33,18 @@ const Home: NextPage = () => {
       <Header activeSection={activeSection} />
       <main>
         <Landing />
+        {/* <div style={{ position: "relative" }}> */}
         <About ref={AboutSectionRef} />
+        {/* </div> */}
+        {/* <div style={{ position: "relative" }}> */}
         <Experience ref={ExperienceSectionRef} />
-        <Skills ref={SkillsSectionRef} />
-        <Contact ref={ContactSectionRef} />
+        {/* </div> */}
+        {/* <div style={{ position: "relative" }}> */}
+        <About ref={AboutSectionRef} />
+        {/* </div> */}
+        {/* <div style={{ position: "relative" }}> */}
+        <Experience ref={ExperienceSectionRef} />
+        {/* </div> */}
       </main>
     </ThemeProvider>
   );

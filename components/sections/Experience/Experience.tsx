@@ -1,4 +1,4 @@
-import React, { forwardRef, ReactElement, RefObject } from "react";
+import React, { forwardRef, Fragment, ReactElement, RefObject } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Section } from "@layout/Section";
 import { Container } from "@layout/Container";
@@ -8,65 +8,30 @@ import { useAnimateOnScroll } from "@hooks/useAnimateOnScroll";
 import { Carousel } from "./components/Carousel";
 import { CarouselItem } from "./components/Carousel/types";
 import * as S from "./styles";
+import { Paragraph } from "@typography/Paragraph";
+import { StickySection } from "@layout/StickySection";
 
 export const Experience = forwardRef(function About(
   _,
   sectionRef: React.ForwardedRef<HTMLElement>
 ): ReactElement {
-  const showSection = useAnimateOnScroll(sectionRef as RefObject<HTMLElement>);
-  const jobs: CarouselItem[] = [
-    {
-      title: "HazardCo",
-      position: "Front-End Developer",
-      startDate: "July 2021",
-      description: "yeet",
-      icon: "/experience/hazardco.png",
-    },
-    {
-      title: "Hnry",
-      position: "Front-End Developer",
-      startDate: "November 2019",
-      endDate: "June 2021",
-      description: "yeet",
-      icon: "/experience/hnry.png",
-    },
-    {
-      title: "Epi-interactive",
-      position: "Full-Stack Developer",
-      startDate: "July 2018",
-      endDate: "November 2019",
-      description: "yeet",
-      icon: "/experience/epi-interactive.svg",
-    },
-  ];
-
   return (
-    <Section
-      direction="vertical"
-      crossAxis="start"
-      mainAxis="start"
-      ref={sectionRef}
-      id="experience"
-      size="big"
-      noContainer
-    >
-      <AnimatePresence>
-        {showSection && (
-          <motion.div
-            variants={S.sectionVariants}
-            initial="entry"
-            animate="visible"
-            style={{ position: "relative" }}
-          >
-            <Container>
-              <Heading variants={S.sectionVariants}>
-                <Accent>Experience</Accent>
-              </Heading>
-            </Container>
-            <Carousel items={jobs} />
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </Section>
+    <StickySection>
+      <Fragment>
+        <Heading>Experience</Heading>
+        <Paragraph>
+          PARAGRAPH 1: Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Nam natus necessitatibus tenetur reprehenderit ratione optio veniam
+          illum itaque fugit dolor. Commodi aliquam laudantium deleniti
+          asperiores modi repellat? Autem, tempora fuga!
+        </Paragraph>
+        <Paragraph>
+          PARAGRAPH 2: Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Nam natus necessitatibus tenetur reprehenderit ratione optio veniam
+          illum itaque fugit dolor. Commodi aliquam laudantium deleniti
+          asperiores modi repellat? Autem, tempora fuga!
+        </Paragraph>
+      </Fragment>
+    </StickySection>
   );
 });

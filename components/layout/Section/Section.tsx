@@ -4,11 +4,17 @@ import { SectionProps } from "./types";
 import * as S from "./styles";
 
 export const Section = forwardRef(function Section(
-  { children, size = "normal", noContainer, ...containerProps }: SectionProps,
+  {
+    children,
+    size = "normal",
+    buffer,
+    noContainer,
+    ...containerProps
+  }: SectionProps,
   ref: React.ForwardedRef<HTMLElement>
 ) {
   return (
-    <S.Section size={size} ref={ref}>
+    <S.Section {...{ size, ref, buffer }}>
       {noContainer ? (
         children
       ) : (

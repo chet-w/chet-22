@@ -1,11 +1,13 @@
-import React, { RefObject, forwardRef, ReactElement } from "react";
+import React, { RefObject, forwardRef, ReactElement, Fragment } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Section } from "@layout/Section";
+import { Container } from "@layout/Container";
 import { Accent } from "@typography/Accent";
 import { Heading } from "@typography/Headings";
 import { Paragraph } from "@typography/Paragraph";
 import { useAnimateOnScroll } from "@hooks/useAnimateOnScroll";
 import * as S from "./styles";
+import { StickySection } from "@layout/StickySection";
 
 export const About = forwardRef(function About(
   _,
@@ -14,38 +16,22 @@ export const About = forwardRef(function About(
   const showSection = useAnimateOnScroll(sectionRef as RefObject<HTMLElement>);
 
   return (
-    <Section
-      direction="vertical"
-      crossAxis="start"
-      mainAxis="start"
-      ref={sectionRef}
-      id="about"
-    >
-      <AnimatePresence>
-        {showSection && (
-          <motion.div
-            variants={S.sectionVariants}
-            initial="entry"
-            animate="visible"
-          >
-            <Heading variants={S.sectionVariants}>
-              <Accent>About me</Accent>
-            </Heading>
-            <Paragraph variants={S.sectionVariants}>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore
-              consequatur libero blanditiis cum, consequuntur sint nobis ea
-              voluptatem at perspiciatis obcaecati eveniet consectetur saepe
-              tempore ex est optio? Inventore, eveniet.
-            </Paragraph>
-            <Paragraph variants={S.sectionVariants}>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore
-              consequatur libero blanditiis cum, consequuntur sint nobis ea
-              voluptatem at perspiciatis obcaecati eveniet consectetur saepe
-              tempore ex est optio? Inventore, eveniet.
-            </Paragraph>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </Section>
+    <StickySection>
+      <Fragment>
+        <Heading>About me</Heading>
+        <Paragraph>
+          PARAGRAPH 1: Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Nam natus necessitatibus tenetur reprehenderit ratione optio veniam
+          illum itaque fugit dolor. Commodi aliquam laudantium deleniti
+          asperiores modi repellat? Autem, tempora fuga!
+        </Paragraph>
+        <Paragraph>
+          PARAGRAPH 2: Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Nam natus necessitatibus tenetur reprehenderit ratione optio veniam
+          illum itaque fugit dolor. Commodi aliquam laudantium deleniti
+          asperiores modi repellat? Autem, tempora fuga!
+        </Paragraph>
+      </Fragment>
+    </StickySection>
   );
 });

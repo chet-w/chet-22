@@ -1,13 +1,7 @@
-import React, {
-  Fragment,
-  ReactElement,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { ReactElement } from "react";
+import { Container } from "@layout/Container";
 import { StickySectionProps } from "./types";
 import * as S from "./styles";
-import { Container } from "@layout/Container";
 
 export function StickySection(props: StickySectionProps): ReactElement {
   return (

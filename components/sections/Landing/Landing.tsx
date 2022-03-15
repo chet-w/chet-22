@@ -13,20 +13,19 @@ export function Landing(): ReactElement {
   const viewPortSize = useViewPortSize();
 
   return (
-    // <StickySection initial>
-    //   <
-    // </StickySection>
     <StickySection initial>
-      <Container direction="vertical">
-        <Heading as="h1">
-          <NameBanner />
-        </Heading>
-        <Subheading>
-          <Accent>Front-End</Accent> Developer
-        </Subheading>
-        <MinorHeading>Wellington, New Zealand</MinorHeading>
+      <Container>
+        <Container direction="vertical">
+          <Heading as="h1">
+            <NameBanner />
+          </Heading>
+          <Subheading>
+            <Accent>Front-End</Accent> Developer
+          </Subheading>
+          <MinorHeading>Wellington, New Zealand</MinorHeading>
+        </Container>
+        <Avatar size="large" />
       </Container>
-      <Avatar size="large" />
     </StickySection>
   );
 }

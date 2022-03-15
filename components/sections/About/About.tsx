@@ -18,7 +18,9 @@ export const About = forwardRef(function About(
   return (
     <StickySection>
       <Fragment>
-        <Heading>About me</Heading>
+        <Heading>
+          <Accent>About me</Accent>
+        </Heading>
         <Paragraph>
           PARAGRAPH 1: Lorem ipsum dolor sit amet consectetur adipisicing elit.
           Nam natus necessitatibus tenetur reprehenderit ratione optio veniam

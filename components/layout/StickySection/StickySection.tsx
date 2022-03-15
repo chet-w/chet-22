@@ -1,11 +1,14 @@
-import React, { ReactElement } from "react";
+import React, { forwardRef, ReactElement } from "react";
 import { Container } from "@layout/Container";
 import { StickySectionProps } from "./types";
 import * as S from "./styles";
 
-export function StickySection(props: StickySectionProps): ReactElement {
+export const StickySection = forwardRef(function StickySection(
+  props: StickySectionProps,
+  sectionRef: React.ForwardedRef<HTMLDivElement>
+): ReactElement {
   return (
-    <S.Container>
+    <S.Container ref={sectionRef}>
       <S.StickySection>
         <S.StickyContent initial={props.initial}>
           <Container direction="vertical">{props.children}</Container>
@@ -14,4 +17,4 @@ export function StickySection(props: StickySectionProps): ReactElement {
       <S.Buffer />
     </S.Container>
   );
-}
+});

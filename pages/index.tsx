@@ -36,7 +36,7 @@ const Home: NextPage = () => {
         <About ref={AboutSectionRef} />
         <Experience ref={ExperienceSectionRef} />
         <About ref={AboutSectionRef} />
-        <Experience ref={ExperienceSectionRef} />
+        <About ref={AboutSectionRef} />
       </main>
     </ThemeProvider>
   );

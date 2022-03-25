@@ -4,4 +4,5 @@ export interface StickySectionProps {
   children: ReactElement | ReactElement[];
   isStuck?: boolean;
   initial?: boolean;
+  hideOverflow?: boolean;
 }

@@ -1,38 +1,49 @@
-import React, { forwardRef, Fragment, ReactElement, RefObject } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { Section } from "@layout/Section";
-import { Container } from "@layout/Container";
+import React, {
+  ForwardedRef,
+  forwardRef,
+  Fragment,
+  ReactElement,
+  RefObject,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+import { useViewportScroll } from "framer-motion";
+import { StickySection } from "@layout/StickySection";
 import { Heading } from "@typography/Headings";
 import { Accent } from "@typography/Accent";
-import { useAnimateOnScroll } from "@hooks/useAnimateOnScroll";
-import { Carousel } from "./components/Carousel";
-import { CarouselItem } from "./components/Carousel/types";
-import * as S from "./styles";
-import { Paragraph } from "@typography/Paragraph";
-import { StickySection } from "@layout/StickySection";
+import { Timeline } from "./components/Timeline";
+import { useIntersectionObserver } from "@asyarb/use-intersection-observer";
 
 export const Experience = forwardRef(function About(
   _,
-  sectionRef: React.ForwardedRef<HTMLElement>
+  sectionRef: any
 ): ReactElement {
+  const { scrollY } = useViewportScroll();
+  const [scrollPercentage, setScrollPercentage] = useState(0);
+
+  useEffect(() => {
+    scrollY.onChange((scrollDistance) => {
+      const position: DOMRect = sectionRef.current.getBoundingClientRect();
+      const distanceFromTop = sectionRef.current.offsetTop;
+      const elementScrolledAmount = scrollDistance - distanceFromTop;
+      const finalScrollPosition = position.height / 3.5;
+
+      const actualScrollPercentage =
+        (elementScrolledAmount / finalScrollPosition) * 100;
+      if (actualScrollPercentage > 0 && actualScrollPercentage < 90) {
+        setScrollPercentage(actualScrollPercentage);
+      }
+    });
+  }, []);
+
   return (
-    <StickySection>
+    <StickySection ref={sectionRef} hideOverflow>
       <Fragment>
         <Heading>
           <Accent>Experience</Accent>
         </Heading>
-        <Paragraph>
-          PARAGRAPH 1: Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Nam natus necessitatibus tenetur reprehenderit ratione optio veniam
-          illum itaque fugit dolor. Commodi aliquam laudantium deleniti
-          asperiores modi repellat? Autem, tempora fuga!
-        </Paragraph>
-        <Paragraph>
-          PARAGRAPH 2: Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Nam natus necessitatibus tenetur reprehenderit ratione optio veniam
-          illum itaque fugit dolor. Commodi aliquam laudantium deleniti
-          asperiores modi repellat? Autem, tempora fuga!
-        </Paragraph>
+        <Timeline scrollPercentage={scrollPercentage} />
       </Fragment>
     </StickySection>
   );

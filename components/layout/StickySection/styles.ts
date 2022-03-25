@@ -4,7 +4,7 @@ import { StickySectionProps } from "./types";
 export const StickySection = styled.div`
   position: sticky;
   top: 0;
-  background-color: aliceblue;
+  background-color: white;
 `;
 
 export const StickyContent = styled.div<StickySectionProps>`

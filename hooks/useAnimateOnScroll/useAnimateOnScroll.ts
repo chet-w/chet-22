@@ -15,13 +15,11 @@ export function useAnimateOnScroll(
       const { height } = sectionRef.current.getBoundingClientRect();
 
       const topBoundary = offsetTop - height * 1.2;
+      const bottomBoundary = topBoundary + height * 1.4;
 
-      if (scrollDistance > topBoundary) {
-        setShowSection(true);
-        setHasSectionAlreadyAppeared(true);
-      } else {
-        setShowSection(false);
-      }
+      setShowSection(
+        scrollDistance > topBoundary && scrollDistance < bottomBoundary
+      );
     } else {
       setShowSection(false);
     }

@@ -8,6 +8,7 @@ export const Section = styled.section<StyledSectionProps>`
   align-items: center;
   height: 100%;
   position: relative;
+  padding-bottom: ${(props) => (props.buffer ? "100vh" : 0)};
 
   & > ${Container} {
     padding-top: ${(props) => (props.size === "big" ? "0" : "100px")};

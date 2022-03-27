@@ -11,4 +11,5 @@ export interface SectionProps extends StyledSectionProps {
 
 export interface StyledSectionProps {
   size?: "normal" | "big";
+  buffer?: boolean;
 }

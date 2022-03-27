@@ -18,7 +18,7 @@ export function Header({ activeSection }: HeaderProps) {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      setShowHeader(scrollDistance > window.innerHeight / 3);
+      setShowHeader(scrollDistance > window.innerHeight);
     } else {
       setShowHeader(false);
     }

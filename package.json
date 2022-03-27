@@ -8,6 +8,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@asyarb/use-intersection-observer": "^2.0.2",
     "framer-motion": "^6.2.6",
     "next": "12.1.0",
     "phosphor-react": "^1.4.0",

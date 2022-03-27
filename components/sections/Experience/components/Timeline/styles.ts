@@ -1,9 +1,9 @@
 import { MinorHeading } from "@typography/Headings";
 import { Paragraph } from "@typography/Paragraph";
-import { motion } from "framer-motion";
+import { motion, Variant } from "framer-motion";
 import Image from "next/image";
 import styled from "styled-components";
-import { ItemProps } from "./types";
+import { ItemProps, TimelineContainerProps } from "./types";
 
 export const Timeline = styled.div`
   width: 200vw;
@@ -64,3 +64,41 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
 `;
+
+export const TimelineContainer = styled.div<TimelineContainerProps>`
+  transition: linear;
+  margin-top: 5rem;
+  transform: translateX(-${(props) => props.scrollPercentage}%);
+`;
+
+export const Trigger = styled.button`
+  background: none;
+  border: none;
+  padding: 0.25rem 0;
+  margin-top: 0.25rem;
+  font-weight: bold;
+  font-size: 0.8rem;
+  color: ${(props) => props.theme.colors.tertiary};
+  display: flex;
+  align-items: flex-end;
+  cursor: pointer;
+
+  svg {
+    margin-bottom: 2px;
+  }
+
+  polyline {
+    stroke-width: 48px;
+  }
+`;
+
+export const timelineItemVariants: Record<string, Variant> = {
+  inactive: {
+    scale: 1,
+    opacity: 0.6,
+  },
+  active: {
+    scale: 1.2,
+    opacity: 1,
+  },
+};

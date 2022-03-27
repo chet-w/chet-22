@@ -1,9 +1,10 @@
 import { Fragment, ReactElement, useEffect } from "react";
+import { CaretRight } from "phosphor-react";
 import Image from "next/image";
 import { MinorHeading } from "@typography/Headings";
-import { Paragraph } from "@typography/Paragraph";
 import { TimelineItem, TimelineProps } from "./types";
 import * as S from "./styles";
+import { Theme } from "theme";
 
 export function Timeline(props: TimelineProps): ReactElement {
   const items: TimelineItem[] = [
@@ -48,32 +49,37 @@ export function Timeline(props: TimelineProps): ReactElement {
     return [start, end].join(" - ");
   }
 
+  function isTimelineItemActive(
+    index: number,
+    length: number,
+    scroll: number
+  ): boolean {
+    const fraction = 100 / length;
+    const lowerThreshhold = fraction * index - 0.5 * fraction;
+    const upperThreshhold = fraction * index + 0.5 * fraction;
+    return scroll >= lowerThreshhold && scroll <= upperThreshhold;
+  }
+
   return (
-    <div
-      style={{
-        transform: `translateX(-${props.scrollPercentage}%)`,
-        transition: "linear",
-        marginTop: "5rem",
-      }}
-    >
+    <S.TimelineContainer scrollPercentage={props.scrollPercentage}>
       <S.Timeline></S.Timeline>
       <S.Container>
         {items.map((item, index) => {
-          const fraction = 100 / items.length;
-          const lowerThreshhold = fraction * index - 0.5 * fraction;
-          const upperThreshhold = fraction * index + 0.5 * fraction;
-          const isActive =
-            props.scrollPercentage >= lowerThreshhold &&
-            props.scrollPercentage <= upperThreshhold;
-
           return (
             <div key={`timeline-item-${index}`}>
               <S.Marker />
               <S.Item
-                animate={{
-                  scale: isActive ? 1.2 : 1,
-                  opacity: isActive ? 1 : 0.6,
-                }}
+                variants={S.timelineItemVariants}
+                initial="inactive"
+                animate={
+                  isTimelineItemActive(
+                    index,
+                    items.length,
+                    props.scrollPercentage
+                  )
+                    ? "active"
+                    : "inactive"
+                }
               >
                 <S.ImageContainer>
                   <Image src={item.image} width="75" height="75" />
@@ -82,13 +88,20 @@ export function Timeline(props: TimelineProps): ReactElement {
                   <MinorHeading>{item.title}</MinorHeading>
                   <strong>{item.subtitle}</strong>
                   <em>{getTimeRange(item.timeframe)}</em>
-                  <Paragraph>More details</Paragraph>
+                  <S.Trigger>
+                    More details{" "}
+                    <CaretRight
+                      size={10}
+                      weight="bold"
+                      color={Theme.colors.tertiary}
+                    />
+                  </S.Trigger>
                 </div>
               </S.Item>
             </div>
           );
         })}
       </S.Container>
-    </div>
+    </S.TimelineContainer>
   );
 }

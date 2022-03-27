@@ -13,3 +13,7 @@ export interface TimelineItem {
   image: string;
   timeframe: string[];
 }
+
+export interface TimelineContainerProps {
+  scrollPercentage: number;
+}
